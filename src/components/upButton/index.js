@@ -137,15 +137,15 @@ if (total===21) {
     
     return(
 <div>
-<div>
+
     <button disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>UP</button>
     {
           this.state.newCardImg.map(
             (newCardImg1, index) => <img key={index} src={newCardImg1} alt='' id={index}/>
           )
         }
-</div>
 <img  src={this.state.img} alt=""/>
+
 <div>
 <WinLose allCardValue={this.state.allCardValue} />
 </div>

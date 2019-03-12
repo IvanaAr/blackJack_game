@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import WinLose from '../../components/winLose'
+import WinLose from '../../components/winLose';
+import './index.css';
 
 class UpButton extends Component {
     constructor() {

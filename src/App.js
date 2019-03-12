@@ -11,8 +11,9 @@ class App extends Component {
             <div>
       <Header/>
       <br/>
-      <button>DOWN</button>
       <Id/>
+      <br/>
+      <button>DOWN</button>
       <Footer/>
       </div>
         );

@@ -139,7 +139,7 @@ class UpButton extends Component {
         return (
             <div>
             <WinLose allCardValue={this.state.allCardValue} />
-    <button disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>UP</button><br/>
+    <button id="getCard" disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>Get Card</button><br/>
     {
           this.state.newCardImg.map(
             (newCardImg1, index) => <img key={index} src={newCardImg1} alt='' id={index}/>

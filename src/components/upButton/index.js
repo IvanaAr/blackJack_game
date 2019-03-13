@@ -155,9 +155,9 @@ class UpButton extends Component {
             (newCardImg1, index) => <img key={index} src={newCardImg1} alt='' id={index}/>
           )
         }
-<div>
+
 <DownButton total={this.state.total}/>
-</div>
+
     </div>
         )
     }

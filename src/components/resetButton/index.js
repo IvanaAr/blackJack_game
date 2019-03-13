@@ -3,7 +3,7 @@ import './index.css';
 
 class ResetButton extends React.Component {
     render() {
-      return ( < button onClick = {this._refreshPage} >ResetGame </button>);
+      return ( <button onClick = {this._refreshPage}>ResetGame</button>);
       }
 
       _refreshPage() {

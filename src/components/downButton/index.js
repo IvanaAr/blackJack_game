@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import './index.css';
 import ReactDOM from "react-dom";
+import {connect} from "react-redux";
 
 class DownButton extends Component {
 constructor(){
     super()
-this.state = { show: false };
+
 }
    
 
   showModal = () => {
-    this.setState({ show: true });
+    this.props.dispatch({type: "SHOW_MODAL"});
   };
 
   hideModal = () => {
-    this.setState({ show: false });
+    this.props.dispatch({type: "HIDE_MODAL"})
   };
 
   render() {
     return (
       <main>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
+        <Modal show={this.props.show} handleClose={this.hideModal}>
           <p>Your Total Score is:</p>
           <p>{this.props.total}</p>
         </Modal>
@@ -44,4 +45,8 @@ const showHideClassName = show ? "modal display-block" : "modal display-none";
     </div>
   );
 };
-export default DownButton;
+
+const mapStateToProps=(state)=>({
+  show: state.show
+})
+export default connect(mapStateToProps)(DownButton);

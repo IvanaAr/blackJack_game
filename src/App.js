@@ -13,7 +13,6 @@ class App extends Component {
       <br/>
       <Id/>
       <br/>
-      <button>DOWN</button>
       <Footer/>
       </div>
         );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WinLose from '../../components/winLose';
 import './index.css';
+import DownButton from '../../components/downButton';
 
 class UpButton extends Component {
     constructor() {
@@ -9,7 +10,8 @@ class UpButton extends Component {
         this.state = {
             newCardImg: [],
             allCardValue: [],
-            img: []
+            img: [],
+            total:''
 
         }
         this.setImg = this.setImg.bind(this);
@@ -25,6 +27,7 @@ class UpButton extends Component {
         const newCardValue = result.cards[0].value;
         console.log(newCardValue);
 
+        // value of first card
         if (newCardValue === "ACE" || newCardValue === "KING" || newCardValue === "JACK" || newCardValue === "QUEEN") {
             if (newCardValue === "ACE") {
                 var specialCardAce = 11;
@@ -45,10 +48,9 @@ class UpButton extends Component {
             console.log(allCardValue);
 
         }
-
         this.setState({
             img: img,
-            allCardValue: allCardValue
+            allCardValue: allCardValue,
         })
     }
 
@@ -85,9 +87,15 @@ class UpButton extends Component {
             console.log(allCardValue);
 
         }
+        const all = this.state.allCardValue;
+        console.log(all);
+        var total = 0;
+        for (var i in all) { total += all[i]; }
+        console.log(total)
         this.setState({
             newCardImg: newCardImg,
-            allCardValue: allCardValue
+            allCardValue: allCardValue,
+            total:total
         })
     }
     upClick(e) {
@@ -141,14 +149,14 @@ class UpButton extends Component {
             <div>
             <WinLose allCardValue={this.state.allCardValue} />
     <button id="getCard" disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>Get Card</button><br/>
+    <img  src={this.state.img} alt=""/>
     {
           this.state.newCardImg.map(
             (newCardImg1, index) => <img key={index} src={newCardImg1} alt='' id={index}/>
           )
         }
-<img  src={this.state.img} alt=""/>
 <div>
-
+<DownButton total={this.state.total}/>
 </div>
     </div>
         )

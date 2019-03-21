@@ -1,5 +1,6 @@
 const initialState={
-  show:false
+  show:false,
+  id:''
 }
 
 const reducer= (state= initialState, action) => {
@@ -13,6 +14,10 @@ const reducer= (state= initialState, action) => {
     return {
       show: false
     }
+
+    case "SET_ID":
+    return Object.assign({},state, {id:action.id});
+
   default:
   return state;
 }

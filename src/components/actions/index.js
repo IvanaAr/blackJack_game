@@ -9,3 +9,8 @@
     this.props.dispatch({type: "HIDE_MODAL"})
   };
 
+  export const setId = id => (
+    { type: "SET_ID",
+     id: id }
+    );
+

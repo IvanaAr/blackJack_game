@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import UpButton from '../../components/upButton'
+import {connect} from "react-redux";
+import {setId} from '../../components/actions'
 
+const mapStateToProps=(state)=>({
+    id:state.id
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setId: id => dispatch(setId(id)),
+  };
+};
 class Id extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            id: ''
-        }
-
         this.setData = this.setData.bind(this);
 
     }
@@ -17,7 +23,7 @@ class Id extends Component {
         console.log(result);
         const id = result.deck_id;
         console.log(id);
-        this.setState({ id: id });
+        this.props.setId(id);
 
     }
 
@@ -35,15 +41,15 @@ class Id extends Component {
     }
 
     render() {
-        if (!this.state.id || this.state.id.length === 0) {
-            return "";
+        if(!this.props.id){
+            return <div>Waiting for results</div>
         }
         return (
 
             <div>
-        <UpButton  id={this.state.id}/>
+        <UpButton  id={this.props.id}/>
       </div>
         );
     }
 }
-export default Id;
+export default connect(mapStateToProps,mapDispatchToProps)(Id);

@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import WinLose from '../../components/winLose';
 import './index.css';
 import DownButton from '../../components/downButton';
+import {setImg} from '../../components/actions';
+import {connect} from "react-redux";
+
+const mapStateToProps=(state)=>({
+    img:state.img,
+    id:state.id
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setImg: img => dispatch(setImg(img)),
+  };
+};
 
 class UpButton extends Component {
     constructor() {
@@ -10,7 +23,6 @@ class UpButton extends Component {
         this.state = {
             newCardImg: [],
             allCardValue: [],
-            img: [],
             total:''
 
         }
@@ -22,7 +34,7 @@ class UpButton extends Component {
         let allCardValue = this.state.allCardValue;
         console.log(result);
         const img = result.cards[0].image;
-        console.log(img);
+        this.props.setImg(img);
         console.log(this.props.id);
         const newCardValue = result.cards[0].value;
         console.log(newCardValue);
@@ -49,7 +61,6 @@ class UpButton extends Component {
 
         }
         this.setState({
-            img: img,
             allCardValue: allCardValue,
         })
     }
@@ -149,7 +160,7 @@ class UpButton extends Component {
             <div>
             <WinLose allCardValue={this.state.allCardValue} />
     <button id="getCard" disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>Get Card</button><br/>
-    <img  src={this.state.img} alt=""/>
+    <img  src={this.props.img} alt=""/>
     {
           this.state.newCardImg.map(
             (newCardImg1, index) => <img key={index} src={newCardImg1} alt='' id={index}/>
@@ -163,4 +174,4 @@ class UpButton extends Component {
     }
 }
 
-export default UpButton;
+export default connect(mapStateToProps,mapDispatchToProps)(UpButton);

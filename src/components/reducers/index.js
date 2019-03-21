@@ -1,6 +1,7 @@
 const initialState={
   show:false,
-  id:''
+  id:'',
+  img:''
 }
 
 const reducer= (state= initialState, action) => {
@@ -17,6 +18,9 @@ const reducer= (state= initialState, action) => {
 
     case "SET_ID":
     return Object.assign({},state, {id:action.id});
+
+    case "SET_IMG":
+    return Object.assign({},state, {img:action.img});
 
   default:
   return state;

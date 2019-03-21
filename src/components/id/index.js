@@ -47,7 +47,7 @@ class Id extends Component {
         return (
 
             <div>
-        <UpButton  id={this.props.id}/>
+        <UpButton/>
       </div>
         );
     }

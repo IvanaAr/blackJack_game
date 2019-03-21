@@ -14,3 +14,7 @@
      id: id }
     );
 
+ export const setImg = img => (
+    { type: "SET_IMG",
+     img: img }
+    );

@@ -13,7 +13,7 @@ class WinLose extends Component {
         if (total === 21) {
             return (
                 <div>
-              <h2>You win <span role="img">&#128526;</span> !!!</h2>
+              <h2>You win <span aria-label="display popover" role="img">&#128526;</span> !!!</h2>
               <h3>ToTaL ScOrE:{total}</h3>
 
 </div>);
@@ -31,7 +31,7 @@ class WinLose extends Component {
         if (total > 21) {
             return (
                 <div>
-       <h2>You lose <span role="img">&#128546;</span></h2>
+       <h2>You lose <span role="img" aria-label="display popover">&#128546;</span></h2>
        <h3>ToTaL ScOrE:{total}</h3>
 
 </div>);

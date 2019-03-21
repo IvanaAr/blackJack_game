@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import './index.css';
-import ReactDOM from "react-dom";
 import {connect} from "react-redux";
 
 class DownButton extends Component {
-constructor(){
-    super()
-
-}
-   
 
   showModal = () => {
     this.props.dispatch({type: "SHOW_MODAL"});

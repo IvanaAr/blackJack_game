@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 
-class ResetButton extends React.Component {
+class ResetButton extends Component {
     render() {
       return ( <button onClick = {this._refreshPage}>ResetGame</button>);
       }

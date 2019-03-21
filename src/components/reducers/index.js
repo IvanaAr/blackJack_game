@@ -13,7 +13,6 @@ const reducer= (state= initialState, action) => {
     return {
       show: false
     }
-  console.log(action);
   default:
   return state;
 }

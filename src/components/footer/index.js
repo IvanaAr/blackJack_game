@@ -10,7 +10,7 @@ class Footer extends Component{
   <div id="button"></div>
 <div id="container">
 <div id="cont">
-<div class="footer_center">
+<div className="footer_center">
 	   <h3>Made by IvanaNutrition © 2019</h3>
 </div>
 </div>

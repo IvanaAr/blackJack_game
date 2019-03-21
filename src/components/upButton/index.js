@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import WinLose from '../../components/winLose';
 import './index.css';
 import DownButton from '../../components/downButton';
-import {setImg} from '../../components/actions';
+import {setImg, setTotal} from '../../components/actions';
 import {connect} from "react-redux";
 
 const mapStateToProps=(state)=>({
     img:state.img,
-    id:state.id
+    id:state.id,
+    total:state.total
 })
 
 const mapDispatchToProps = dispatch => {
   return {
     setImg: img => dispatch(setImg(img)),
+    setTotal: total => dispatch(setTotal(total)),
   };
 };
 
@@ -102,11 +104,10 @@ class UpButton extends Component {
         console.log(all);
         var total = 0;
         for (var i in all) { total += all[i]; }
-        console.log(total)
+        this.props.setTotal(total);
         this.setState({
             newCardImg: newCardImg,
             allCardValue: allCardValue,
-            total:total
         })
     }
     upClick(e) {
@@ -166,8 +167,7 @@ class UpButton extends Component {
             (newCardImg1, index) => <img key={index} src={newCardImg1} alt='' id={index}/>
           )
         }
-
-<DownButton total={this.state.total}/>
+<DownButton total={this.props.total}/>
 
     </div>
         )

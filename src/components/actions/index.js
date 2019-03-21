@@ -1,6 +1,3 @@
- import React, { Component } from 'react';
-
-
  export const showModal = () => {
     this.props.dispatch({type: "SHOW_MODAL"});
   };
@@ -17,4 +14,9 @@
  export const setImg = img => (
     { type: "SET_IMG",
      img: img }
+    );
+
+ export const setTotal = total => (
+    { type: "SET_TOTAL",
+     total: total }
     );

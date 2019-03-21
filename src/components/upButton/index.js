@@ -154,7 +154,7 @@ class UpButton extends Component {
     render() {
         return (
             <div>
-            <WinLose allCardValue={this.props.allCardValue} />
+            <WinLose/>
             <button id="getCard" disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>Get Card</button><br/>
             <img  src={this.props.img} alt=""/>
         {

@@ -3,7 +3,8 @@ const initialState={
   id:'',
   img:'',
   total:'',
-  allCardValue:[]
+  allCardValue:[],
+  newCardImg:[]
 }
 
 const reducer= (state= initialState, action) => {
@@ -29,6 +30,9 @@ const reducer= (state= initialState, action) => {
 
     case "SET_ALL_CARD_VALUE":
     return Object.assign({},state, {allCardValue:action.allCardValue});
+
+    case "SET_NEW_CARD_IMG":
+    return Object.assign({},state, {newCardImg:action.newCardImg});
 
   default:
   return state;

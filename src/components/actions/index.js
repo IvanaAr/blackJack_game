@@ -25,3 +25,8 @@
     { type: "SET_ALL_CARD_VALUE",
      allCardValue: allCardValue }
     );
+
+ export const setNewCardImg = newCardImg => (
+    { type: "SET_NEW_CARD_IMG",
+     newCardImg: newCardImg }
+    );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import WinLose from '../../components/winLose';
 import './index.css';
 import DownButton from '../../components/downButton';
-import {setImg, setTotal, setAllCardValue} from '../../components/actions';
+import {setImg, setTotal, setAllCardValue, setNewCardImg} from '../../components/actions';
 import {connect} from "react-redux";
 
 const mapStateToProps=(state)=>({
@@ -10,6 +10,7 @@ const mapStateToProps=(state)=>({
     id:state.id,
     total:state.total,
     allCardValue:state.allCardValue,
+    newCardImg:state.newCardImg
 })
 
 const mapDispatchToProps = dispatch => {
@@ -17,16 +18,14 @@ const mapDispatchToProps = dispatch => {
     setImg: img => dispatch(setImg(img)),
     setTotal: total => dispatch(setTotal(total)),
     setAllCardValue: allCardValue => dispatch(setAllCardValue(allCardValue)),
+    setNewCardImg: newCardImg => dispatch(setNewCardImg(newCardImg)),
   };
 };
 
 class UpButton extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
-        this.state = {
-            newCardImg: [],
-        }
         this.setImg = this.setImg.bind(this);
         this.newCard = this.newCard.bind(this);
     }
@@ -71,10 +70,10 @@ class UpButton extends Component {
         // Image of card//
 
         console.log(result);
-        let newCardImg = this.state.newCardImg;
+        let newCardImg = this.props.newCardImg;
         const newCardImg1 = result.cards[0].image;
         newCardImg.push(newCardImg1);
-
+        this.props.setNewCardImg(newCardImg);
         // Value of card//
         let allCardValue = this.props.allCardValue;
         const newCardValue = result.cards[0].value;
@@ -106,9 +105,6 @@ class UpButton extends Component {
         var total = 0;
         for (var i in all) { total += all[i]; }
         this.props.setTotal(total);
-        this.setState({
-            newCardImg: newCardImg,
-        })
     }
     upClick(e) {
         console.log("Yes you click");
@@ -156,20 +152,19 @@ class UpButton extends Component {
 
     }
     render() {
-
         return (
             <div>
             <WinLose allCardValue={this.props.allCardValue} />
-    <button id="getCard" disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>Get Card</button><br/>
-    <img  src={this.props.img} alt=""/>
-    {
-          this.state.newCardImg.map(
+            <button id="getCard" disabled={this.isDisabled()} onClick={(e) => this.upClick(e)}>Get Card</button><br/>
+            <img  src={this.props.img} alt=""/>
+        {
+          this.props.newCardImg.map(
             (newCardImg1, index) => <img key={index} src={newCardImg1} alt='' id={index}/>
           )
         }
-<DownButton total={this.props.total}/>
+            <DownButton total={this.props.total}/>
 
-    </div>
+            </div>
         )
     }
 }

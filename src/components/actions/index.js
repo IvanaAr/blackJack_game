@@ -20,3 +20,8 @@
     { type: "SET_TOTAL",
      total: total }
     );
+
+ export const setAllCardValue = allCardValue => (
+    { type: "SET_ALL_CARD_VALUE",
+     allCardValue: allCardValue }
+    );
